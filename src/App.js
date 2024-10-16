@@ -14,9 +14,16 @@ function App() {
   const [todoValue, setTodoValue] = useState([]);
 
   const getTasks = async () => {
-    const response = await api.get("/tasks");
-    console.log("rrrrr", response);
-    setTodoList(response.data.data);
+    try {
+      const response = await api.get("/tasks");
+      if (response.status === 200) {
+        setTodoList(response.data.data);
+      } else {
+        console.log("ERROR", response.data.error);
+      }
+    } catch (error) {
+      console.log("API 호출 에러", error);
+    }
   };
 
   const addTask = async () => {
