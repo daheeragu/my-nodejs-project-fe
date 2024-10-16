@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
-const TodoItem = () => {
+const TodoItem = ({ item, changeIsCompleted, deleteOne }) => {
+  const id = item._id;
+  const [isCompleted, setIsCompleted] = useState(false);
+
   return (
     <Row>
       <Col xs={12}>
-        <div className={`todo-item`}>
-          <div className="todo-content">밥먹기</div>
+        {/* className을 동적으로 처리 */}
+        <div className={`todo-item ${item.isCompleted ? "item-complete" : ""}`}>
+          <div className="todo-content">{item.task}</div>
 
           <div>
-            <button className="button-delete">삭제</button>
-            <button className="button-delete">끝남</button>
+            <button
+              className="button-delete"
+              onClick={() => deleteOne(item._id)}
+            >
+              삭제
+            </button>
+            <button
+              className="button-delete"
+              onClick={() => changeIsCompleted(item._id)}
+            >
+              {item.isCompleted ? "완료" : "미완료"}
+            </button>
           </div>
         </div>
       </Col>

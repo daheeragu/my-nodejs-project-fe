@@ -25,8 +25,13 @@ api.interceptors.response.use(
     return response;
   },
   function (error) {
-    error = error.response.data;
-    console.log("RESPONSE ERROR", error);
+    if (error.response && error.response.data) {
+      error = error.response.data;
+      console.log("RESPONSE ERROR", error);
+    } else {
+      console.log("UNKNOWN ERROR", error);
+    }
+
     return Promise.reject(error);
   }
 );
