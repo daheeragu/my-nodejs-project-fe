@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
-const TodoItem = ({ item, deleteItem, toggleComplete }) => {
+const TodoItem = ({ item, changeIsCompleted, deleteOne }) => {
+  const id = item._id;
+  const [isCompleted, setIsCompleted] = useState(false);
+
   return (
     <Row>
       <Col xs={12}>
@@ -13,13 +16,13 @@ const TodoItem = ({ item, deleteItem, toggleComplete }) => {
           <div>
             <button
               className="button-delete"
-              onClick={() => deleteItem(item._id)}
+              onClick={() => deleteOne(item._id)}
             >
               삭제
             </button>
             <button
               className="button-delete"
-              onClick={() => toggleComplete(item._id)}
+              onClick={() => changeIsCompleted(item._id)}
             >
               {item.isCompleted ? `안끝남` : `끝남`}
             </button>
