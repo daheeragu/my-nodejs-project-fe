@@ -5,7 +5,9 @@ const TodoItem = ({ item, deleteItem, toggleComplete }) => {
   return (
     <Row>
       <Col xs={12}>
-        <div className={`todo-item ${item.isComplete ? "item-complete" : ""}`}>
+        <div
+          className={`todo-item ${item.isCompleted ? "item-completed" : ""}`}
+        >
           <div className="todo-content">{item.task}</div>
 
           <div>
@@ -19,7 +21,7 @@ const TodoItem = ({ item, deleteItem, toggleComplete }) => {
               className="button-delete"
               onClick={() => toggleComplete(item._id)}
             >
-              {item.isComplete ? `안끝남` : `끝남`}
+              {item.isCompleted ? `안끝남` : `끝남`}
             </button>
           </div>
         </div>

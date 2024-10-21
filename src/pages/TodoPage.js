@@ -20,7 +20,7 @@ const TodoPage = () => {
     try {
       const response = await api.post("/tasks", {
         task: todoValue,
-        isComplete: false,
+        isCompleted: false,
       });
       if (response.status === 200) {
         getTasks();
@@ -47,7 +47,7 @@ const TodoPage = () => {
     try {
       const task = todoList.find((item) => item._id === id);
       const response = await api.put(`/tasks/${id}`, {
-        isComplete: !task.isComplete,
+        isCompleted: !task.isCompleted,
       });
       if (response.status === 200) {
         getTasks();
