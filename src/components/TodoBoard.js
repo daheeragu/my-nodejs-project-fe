@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-const TodoBoard = ({ todoList, changeIsCompleted, deleteOne }) => {
+const TodoBoard = ({ todoList, deleteItem, toggleComplete }) => {
   return (
     <div>
       <h2>Todo List</h2>
@@ -9,8 +9,8 @@ const TodoBoard = ({ todoList, changeIsCompleted, deleteOne }) => {
         todoList.map((item) => (
           <TodoItem
             item={item}
-            changeIsCompleted={changeIsCompleted}
-            deleteOne={deleteOne}
+            toggleComplete={toggleComplete}
+            deleteItem={deleteItem}
           />
         ))
       ) : (

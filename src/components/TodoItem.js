@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 
-const TodoItem = ({ item, changeIsCompleted, deleteOne }) => {
+const TodoItem = ({ item, toggleComplete, deleteItem }) => {
   const id = item._id;
   const [isCompleted, setIsCompleted] = useState(false);
 
@@ -12,17 +12,17 @@ const TodoItem = ({ item, changeIsCompleted, deleteOne }) => {
           className={`todo-item ${item.isCompleted ? "item-completed" : ""}`}
         >
           <div className="todo-content">{item.task}</div>
-
+          <div>by {item.author.name}</div>
           <div>
             <button
               className="button-delete"
-              onClick={() => deleteOne(item._id)}
+              onClick={() => deleteItem(item._id)}
             >
               삭제
             </button>
             <button
               className="button-delete"
-              onClick={() => changeIsCompleted(item._id)}
+              onClick={() => toggleComplete(item._id)}
             >
               {item.isCompleted ? `안끝남` : `끝남`}
             </button>

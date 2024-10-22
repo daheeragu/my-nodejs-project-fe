@@ -29,6 +29,16 @@ button {
   background-color: lightblue;
   color: white;
 }
+.logout-container {
+  display: flex;
+  justify-content: flex-end; /* 오른쪽 끝으로 정렬 */
+  margin-top: 10px;
+}
+.button-logout {
+  border: none;
+  background-color: lightblue;
+  color: white;
+}
 .button-add {
   height: 40px;
   width: 100%;
